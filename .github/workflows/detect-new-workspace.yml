@@ -1,0 +1,55 @@
+name: Detect and propose Renovate presets for new workspaces
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Every Monday at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: new-workspace-presets
+  cancel-in-progress: false
+
+jobs:
+  detect-and-propose:
+    name: Detect new workspaces and open PR with presets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+      
+      - name: Checkout
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          fetch-depth: 2
+          ref: main
+          token: ${{ secrets.RHDH_BOT_TOKEN }}
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+
+      - name: Detect new workspaces and generate presets
+        run: node scripts/ci/detect-new-workspaces.js
+
+      - name: Create Pull Request if changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.RHDH_BOT_TOKEN }}
+          branch: automation/add-renovate-presets
+          commit-message: 'chore: add Renovate presets for new workspaces'
+          title: Add Renovate presets for new workspaces
+          body: |
+            This PR adds Renovate presets for newly detected workspaces.
+
+            Presets are based on base policies. Reviewers are auto-assigned via CODEOWNERS.
+          signoff: true
+          add-paths: |
+            .github/renovate-presets/workspace/*.json
+            .github/renovate.json
