@@ -1,0 +1,28 @@
+{
+  "packageRules": [
+    {
+      "description": "all Noop minor updates",
+      "matchFileNames": ["workspaces/noop/**"],
+      "extends": [
+        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/base/rhdh-minor-presets(Noop)"
+      ],
+      "addLabels": ["team/rhdh", "noop"]
+    },
+    {
+      "description": "all Noop patch updates",
+      "matchFileNames": ["workspaces/noop/**"],
+      "extends": [
+        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/base/rhdh-patch-presets(Noop)"
+      ],
+      "addLabels": ["team/rhdh", "noop"]
+    },
+    {
+      "description": "all Noop dev dependency updates",
+      "matchFileNames": ["workspaces/noop/**"],
+      "extends": [
+        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/base/rhdh-devdependency-presets(Noop)"
+      ],
+      "addLabels": ["team/rhdh", "noop"]
+    }
+  ]
+}
