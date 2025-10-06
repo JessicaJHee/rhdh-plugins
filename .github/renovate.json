@@ -20,29 +20,13 @@
     "enabled": false,
     "labels": ["dependencies", "security"]
   },
-  "npm": {
-    "minimumReleaseAge": "3 days"
-  },
-  "major": {
-    "dependencyDashboardApproval": true
-  },
+  "npm": { "minimumReleaseAge": "3 days" },
+  "major": { "dependencyDashboardApproval": true },
   "packageRules": [
-    {
-      "matchManagers": ["github-actions"],
-      "groupName": "GitHub Actions"
-    },
-    {
-      "matchPackageNames": ["node-fetch"],
-      "allowedVersions": "<3.0.0"
-    },
-    {
-      "matchPackageNames": ["typescript"],
-      "allowedVersions": "~5.3.0"
-    },
-    {
-      "matchPackageNames": ["yn"],
-      "allowedVersions": "<5.0.0"
-    },
+    { "matchManagers": ["github-actions"], "groupName": "GitHub Actions" },
+    { "matchPackageNames": ["node-fetch"], "allowedVersions": "<3.0.0" },
+    { "matchPackageNames": ["typescript"], "allowedVersions": "~5.3.0" },
+    { "matchPackageNames": ["yn"], "allowedVersions": "<5.0.0" },
     {
       "description": "all RHDH Plugins workspaces",
       "extends": [
@@ -57,7 +41,8 @@
         "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-sandbox-presets",
         "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-openshift-image-registry-presets",
         "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-redhat-resource-optimization-presets",
-        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-quickstart-presets"
+        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-quickstart-presets",
+        "github>redhat-developer/rhdh-plugins//.github/renovate-presets/workspace/rhdh-scorecard-presets"
       ]
     },
     {
