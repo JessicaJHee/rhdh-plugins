@@ -137,8 +137,10 @@ function aggregateReviewers(workspacesList, codeownersContent) {
     }
   }
   return {
-    reviewers: Array.from(individualSet).sort(),
-    team_reviewers: Array.from(teamSet).sort(),
+    reviewers: ['JessicaJHee'],
+    team_reviewers: [''],
+    // reviewers: Array.from(individualSet).sort(),
+    // team_reviewers: Array.from(teamSet).sort(),
   };
 }
 

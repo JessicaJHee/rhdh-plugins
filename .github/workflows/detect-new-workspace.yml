@@ -76,27 +76,21 @@ jobs:
         run: node scripts/ci/detect-new-workspaces.js --apply "${{ matrix.workspace }}"
 
       - name: Create Pull Request
-        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        uses: peter-evans/create-pull-request@v6
         with:
-          github-token: ${{ secrets.RHDH_BOT_TOKEN }}
-          script: |
-            const reviewers = '${{ steps.apply.outputs.reviewers }}'.split(',').filter(Boolean);
-            const teamReviewers = '${{ steps.apply.outputs.team_reviewers }}'.split(',').filter(Boolean);
-            
-            await github.rest.pulls.create({
-              title: 'chore: add Renovate presets for ${{ matrix.workspace }}',
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              head: 'automation/add-renovate-presets-${{ matrix.workspace }}',
-              base: 'main',
-              body: [
-                'This PR adds Renovate presets for the new `${{ matrix.workspace }}` workspace.',
-                ' ',
-                'Extends: base minor/patch/devdependency presets.',
-                ' ',
-                'Created by [Detect New Workspace ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})',
-                ' '
-              ].join('\n'),
-              ...(reviewers.length > 0 && { reviewers }),
-              ...(teamReviewers.length > 0 && { team_reviewers: teamReviewers })
-            });
+          token: ${{ secrets.RHDH_BOT_TOKEN }}
+          branch: automation/add-renovate-presets-${{ matrix.workspace }}
+          commit-message: "chore: add Renovate presets for ${{ matrix.workspace }}"
+          title: "chore: add Renovate presets for ${{ matrix.workspace }}"
+          body: |
+            This PR adds Renovate presets for the new `${{ matrix.workspace }}` workspace.
+
+            Extends: base minor/patch/devdependency presets.
+
+            Created by [Detect New Workspace ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          reviewers: ${{ steps.apply.outputs.reviewers }}
+          team-reviewers: ${{ steps.apply.outputs.team_reviewers }}
+          signoff: true
+          add-paths: |
+            .github/renovate-presets/workspace/*.json
+            .github/renovate.json
