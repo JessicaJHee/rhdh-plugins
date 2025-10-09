@@ -137,8 +137,10 @@ function aggregateReviewers(workspacesList, codeownersContent) {
     }
   }
   return {
-    reviewers: Array.from(individualSet).sort(),
-    team_reviewers: Array.from(teamSet).sort(),
+    reviewers: ['test-reviewer-1', 'test-reviewer-2'],
+    team_reviewers: ['test-org/team-1'],
+    // reviewers: Array.from(individualSet).sort(),
+    // team_reviewers: Array.from(teamSet).sort(),
   };
 }
 
