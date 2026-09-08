@@ -168,11 +168,18 @@ gh run list --workflow=fullsend.yaml --repo redhat-developer/rhdh-plugins
 gh run view <run-id> --repo redhat-developer/rhdh-plugins --log
 ```
 
-### Layer 2: Agent transcripts
+### Layer 2: Agent transcripts and iteration output
 
 ```bash
 gh run download <run-id> --repo redhat-developer/rhdh-plugins -n transcript
 ```
+
+CVE bump cells also write **`bump-result.json`** (raw output from
+`bump-workspace-packages.js --json`) beside **`cve-result.json`** under
+`iteration-*/output/` on the Fullsend run. Download the run’s **output**
+artifact (or inspect that path in logs) and check `ancestorAutoPackages` /
+`results[]` for ancestor-bump diagnostics — the transcript alone may omit
+large JSON.
 
 ### Layer 3: Sandbox logs
 
