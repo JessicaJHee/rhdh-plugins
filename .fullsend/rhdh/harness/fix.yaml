@@ -3,7 +3,7 @@ agent: rhdh/agents/fix.md
 policy: rhdh/policies/code.yaml
 skills:
   - https://github.com/redhat-developer/rhdh-skill/tree/e84109919ae6085e3dcfe568c695e6dda54874ce/skills/rhdh-coding#sha256=5a4bc35476108a215091ccf1180cee68547c7668c6b193de4402674bc7b6cded
-  - https://github.com/kim-tsao/rhdh-security-skills/tree/2d8163b0965f7c9eb0456781be2895ff65e34dfe/skills/cve/plugins-package-impact#sha256=cd6bcd432c555f49e515bfca811c1cb0bcaafffd208e5b4648e7ef765b1d8c3f
+  - https://github.com/kim-tsao/rhdh-security-skills/tree/b1fd05f64628886ba273ea9ce1f6bcd07963fff5/skills/cve/plugins-package-impact#sha256=4ca7986c70a2c33695dedd098f705123feb017adb4c1b79cdf1f1ca3dfe334bb
 # Harness-level allowlist required for URL skills (not inherited from base or
 # config.yaml). Must also be covered by config.yaml allowed_remote_resources.
 allowed_remote_resources:
