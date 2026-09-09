@@ -18,7 +18,7 @@ slug: rhdh-plugins-package-impact
 # DEPENDABOT_TOKEN and minted GH_TOKEN lacks Dependabot alerts read.
 
 skills:
-  - https://github.com/kim-tsao/rhdh-security-skills/tree/b1fd05f64628886ba273ea9ce1f6bcd07963fff5/skills/cve/plugins-package-impact#sha256=4ca7986c70a2c33695dedd098f705123feb017adb4c1b79cdf1f1ca3dfe334bb
+  - https://github.com/kim-tsao/rhdh-security-skills/tree/b1fd05f64628886ba273ea9ce1f6bcd07963fff5/skills/cve/plugins-package-impact#sha256=53a5b9be259f604567c395db9a35110a7327ade5c7862ee1315b313efd177be4
 
 # Harness-level allowlist required for URL skills (not inherited from
 # config.yaml). Must also be covered by config.yaml allowed_remote_resources.
