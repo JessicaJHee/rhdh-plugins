@@ -38,7 +38,6 @@ timeout_minutes: 60
 secrets:
   - JIRA_API_TOKEN
   - RHDH_CVE_SLACK_WEBHOOK
-  - FULLSEND_GH_TOKEN
 
 overlays:
   - when: 'runtime.forge == "github"'
