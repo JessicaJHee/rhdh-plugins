@@ -66,3 +66,6 @@ site
 
 # Local git worktrees
 .worktrees/
+
+# Fullsend cache
+.fullsend/.fullsend-cache/
